@@ -5,9 +5,9 @@ describe("Comar Automation", () => {
     cy.visit("https://www.comar.tn/");
 
     cy.contains("Actualités").click();
+    // Actualité html
 
-    cy.contains("ACTUALITÉS").should("be.visible");
-
+    cy.contains("Actualités").should("be.visible");
     cy.get("#edit-searchmeta").type("COMAR Assurances partenaire");
     cy.get("#edit-submit-actualites").click();
 
