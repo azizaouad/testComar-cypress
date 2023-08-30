@@ -1,18 +1,19 @@
 ///<reference types="cypress"/>
+import ComarTest from "../../pages/ComarTest";
 
 describe("Comar Automation", () => {
   it("Automates the required actions", () => {
-    cy.visit("https://www.comar.tn/");
+    const ln = new ComarTest();
+    ln.navigate("https://www.comar.tn/");
+    ln.clickActualites();
 
-    cy.contains("Actualités").click();
+    const word = "Actualités";
+    ln.CheckText(word);
+
     // Actualité html
+    ln.search("COMAR Assurances partenaire");
 
-    cy.contains("Actualités").should("be.visible");
-    cy.get("#edit-searchmeta").type("COMAR Assurances partenaire");
-    cy.get("#edit-submit-actualites").click();
-
-    cy.contains(
-      "COMAR Assurances partenaire du Semi-Marathon Ulysse Djerba"
-    ).should("be.visible");
+    const text = "COMAR Assurances partenaire du Semi-Marathon Ulysse Djerba";
+    ln.CheckText(text);
   });
 });
